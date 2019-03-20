@@ -378,6 +378,7 @@ static int tag_compose(char *tag, char *fname, char **out_buf, size_t *out_size)
     size_t tmp_s;
 #endif
 
+    flb_trace("tag_compose tag_regex: %p", tag_regex);
 #ifdef FLB_HAVE_REGEX
     if (tag_regex) {
         n = flb_regex_do(tag_regex, (unsigned char *) fname, strlen(fname), &result);
