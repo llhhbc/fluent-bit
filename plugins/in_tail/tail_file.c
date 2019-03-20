@@ -429,6 +429,7 @@ static int tag_compose(char *tag, char *fname, char **out_buf, size_t *out_size)
                 memcpy(buf + buf_s, p, len);
                 buf_s += len;
             }
+            flb_trace("get tag name %s. ", buf);
         }
     }
     else {
@@ -496,6 +497,8 @@ static int tag_compose(char *tag, char *fname, char **out_buf, size_t *out_size)
 
     buf[buf_s] = '\0';
     *out_size = buf_s;
+
+    flb_trace("get tag name end %s. ", buf);
 
     return 0;
 }
