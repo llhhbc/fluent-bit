@@ -102,6 +102,7 @@ void flb_filter_do(struct flb_input_chunk *ic,
         , f_ins->match_regex
 #endif
            )) {
+            flb_trace("enter filter name[%s] alias[%s]: ", f_ins->name, f_ins->alias);
             /* Reset filtered buffer */
             out_buf = NULL;
             out_size = 0;
@@ -170,6 +171,7 @@ void flb_filter_do(struct flb_input_chunk *ic,
                 flb_free(out_buf);
             }
         }
+        flb_trace("filter name[%s] alias[%s] no match ", f_ins->name, f_ins->alias);
     }
 
     msgpack_zone_free(mp_zone);
