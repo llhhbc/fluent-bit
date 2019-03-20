@@ -69,4 +69,5 @@ int flb_hash_get_by_id(struct flb_hash *ht, int id, char *key, char **out_buf,
                        size_t *out_size);
 int flb_hash_del(struct flb_hash *ht, char *key);
 
+int flb_hash_debug(char *msg, struct flb_hash *ht);
 #endif

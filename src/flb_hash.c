@@ -411,3 +411,31 @@ int flb_hash_del(struct flb_hash *ht, char *key)
 
     return 0;
 }
+
+int flb_hash_debug(char *msg, struct flb_hash *ht)
+{
+#ifndef FLB_HAVE_TRACE
+    return 0;
+#endif
+
+    struct flb_hash_table *table;
+    struct mk_list *head;
+    struct flb_hash_entry *entry = NULL;
+    int i=0;
+
+    flb_trace("%s: evict_mode[%d], max_entries[%d], size[%d], total_count[%d]. ", msg, ht->evict_mode, ht->max_entries, ht->size, ht->total_count);
+
+
+    for (i=0;i<ht->size;i++) {
+        table = &ht->table[i];
+        if (table->count == 0) {
+            continue;
+        }
+        mk_list_foreach(head, &table->chains) {
+            entry = mk_list_entry(head, struct flb_hash_entry, _head);
+            flb_trace("%s: key[%s], val[%s]", msg, entry->key, entry->val);
+            entry = NULL;
+        }
+    };
+    return 0;
+}

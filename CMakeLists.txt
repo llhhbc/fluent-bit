@@ -29,7 +29,8 @@ set(FLB_VERSION_PATCH  4)
 set(FLB_VERSION_STR "${FLB_VERSION_MAJOR}.${FLB_VERSION_MINOR}.${FLB_VERSION_PATCH}")
 
 # Build Options
-option(FLB_ALL                "Enable all features"           No)
+option(FLB_ALL                "Enable all features"          Yes)
+option(FLB_DEV                "Enable dev model"             Yes)
 option(FLB_DEBUG              "Build with debug symbols"      No)
 option(FLB_COVERAGE           "Build with code-coverage"      No)
 option(FLB_JEMALLOC           "Build with Jemalloc support"   No)

@@ -388,6 +388,7 @@ static int tag_compose(char *tag, char *fname, char **out_buf, size_t *out_size)
         else {
             ht = flb_hash_create(FLB_HASH_EVICT_NONE, FLB_HASH_TABLE_SIZE, FLB_HASH_TABLE_SIZE);
             flb_regex_parse(tag_regex, &result, cb_results, ht);
+            flb_hash_debug("get tag parser", ht);
 
             for (p = tag, beg = p; (beg = strchr(p, '<')); p = end + 2) {
                 if (beg != p) {
