@@ -645,6 +645,7 @@ int flb_tail_file_append(char *path, struct stat *st, int mode,
         file->tag_len = strlen(ctx->i_ins->tag);
         file->tag_buf = flb_strdup(ctx->i_ins->tag);
     }
+    flb_trace("add tag fs: ", file->tag_buf);
 
     /* Register this file into the fs_event monitoring */
     ret = flb_tail_fs_add(file);
