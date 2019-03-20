@@ -36,8 +36,9 @@ int flb_kube_regex_init(struct flb_kube *ctx)
             ctx->regex = flb_regex_create((unsigned char *) KUBE_TAG_TO_REGEX);
             flb_trace("kube_regex use: %s", KUBE_TAG_TO_REGEX);
         }
+    } else {
+        flb_trace("kube_regex use: %s", ctx->parser->name);
     }
-    flb_trace("kube_regex use: %s", ctx->parser->name);
 
     if (!ctx->regex) {
         return -1;
