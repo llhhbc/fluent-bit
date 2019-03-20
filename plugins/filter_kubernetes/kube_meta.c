@@ -541,6 +541,8 @@ static inline int extract_meta(struct flb_kube *ctx, char *tag, int tag_len,
     /* Reset meta context */
     memset(meta, '\0', sizeof(struct flb_kube_meta));
 
+    flb_trace("in extract_meta, get journal[%d] reg[%s] tag[%s].", ctx->use_journal, ctx->regex->pattern, tag);
+
     /* Journald */
     if (ctx->use_journal == FLB_TRUE) {
         off = 0;
