@@ -358,6 +358,7 @@ void flb_filter_initialize_all(struct flb_config *config)
     /* Iterate all active filter instance plugins */
     mk_list_foreach_safe(head, tmp, &config->filters) {
         in = mk_list_entry(head, struct flb_filter_instance, _head);
+        flb_trace("init filter : %s. ", flb_filter_name(in));
 
         if (!in->match
 #ifdef FLB_HAVE_REGEX
