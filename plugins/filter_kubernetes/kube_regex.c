@@ -19,6 +19,7 @@
 
 #include <fluent-bit/flb_info.h>
 #include <fluent-bit/flb_regex.h>
+#include <fluent-bit/flb_parser.h>
 
 #include "kube_conf.h"
 #include "kube_regex.h"
@@ -29,11 +30,14 @@ int flb_kube_regex_init(struct flb_kube *ctx)
     if (!ctx->parser) {
         if (ctx->use_journal == FLB_TRUE) {
             ctx->regex = flb_regex_create((unsigned char *) KUBE_JOURNAL_TO_REGEX);
+            flb_trace("kube_regex use: %s", KUBE_JOURNAL_TO_REGEX);
         }
         else {
             ctx->regex = flb_regex_create((unsigned char *) KUBE_TAG_TO_REGEX);
+            flb_trace("kube_regex use: %s", KUBE_TAG_TO_REGEX);
         }
     }
+    flb_trace("kube_regex use: %s", ctx->parser->name);
 
     if (!ctx->regex) {
         return -1;
