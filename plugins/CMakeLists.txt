@@ -157,6 +157,7 @@ REGISTER_FILTER_PLUGIN("filter_throttle")
 
 if(FLB_REGEX)
   REGISTER_FILTER_PLUGIN("filter_kubernetes")
+  REGISTER_FILTER_PLUGIN("filter_cgolib")
   REGISTER_FILTER_PLUGIN("filter_parser")
 endif()
 
